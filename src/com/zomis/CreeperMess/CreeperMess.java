@@ -16,9 +16,9 @@ import com.zomis.CreeperMess.CreeperMessEntityListener;
 
 
 /**
- * SuperJump for Bukkit
+ * CreeperMess for Bukkit
  *
- * @author Bubby4j
+ * @author Zomis
  */
 
 public class CreeperMess extends JavaPlugin {
