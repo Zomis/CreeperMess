@@ -3,11 +3,12 @@ package com.zomis.CreeperMess;
 import org.bukkit.Location;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityExplodeEvent;
-import org.bukkit.event.entity.EntityListener;
 import org.bukkit.ChatColor;
 
-public class CreeperMessEntityListener extends EntityListener {
+public class CreeperMessEntityListener implements Listener {
 	
 	private CreeperMess p = CreeperMess.p;
 	
@@ -33,7 +34,7 @@ public class CreeperMessEntityListener extends EntityListener {
 		return closest;
 	}
 	
-	@Override
+	@EventHandler
 	public void onEntityExplode(EntityExplodeEvent event)
 	{
 		if (!(event.getEntity() instanceof Creeper)) return;

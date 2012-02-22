@@ -6,23 +6,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.event.Event.Priority;
-import org.bukkit.event.Event;
-//import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.plugin.PluginManager;
 
 import com.zomis.CreeperMess.CreeperMessEntityListener;
 
 
 /**
- * CreeperMess for Bukkit
+ * CreeperMess 1.1 for Bukkit
  *
  * @author Zomis
  */
 
 public class CreeperMess extends JavaPlugin {
-    private final CreeperMessEntityListener entityListener = new CreeperMessEntityListener(this);
     public FileConfiguration config = null;
     public static CreeperMess p;
     public String message;
@@ -34,7 +29,6 @@ public class CreeperMess extends JavaPlugin {
     	config = this.getConfig();
     	config.addDefault("message", "%C_DARK_GREEN%A creeper blew up at level %y% in %World%, %ClosestPlayerDistance% blocks from %ClosestPlayer%");
     	config.addDefault("crossworldmessages", true);
-//    	PluginDescriptionFile pdfFile = this.getDescription();
 
     	message = config.getString("message");
     	crossworld = config.getBoolean("crossworldmessages");
@@ -55,8 +49,7 @@ public class CreeperMess extends JavaPlugin {
     	}*/
 
         // Register events
-    	PluginManager pm = getServer().getPluginManager();
-        pm.registerEvent(Event.Type.ENTITY_EXPLODE, entityListener, Priority.Normal, this);
+    	getServer().getPluginManager().registerEvents(new CreeperMessEntityListener(this), this);
 
         log("Enabled!");
     }
